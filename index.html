@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boots to Flip-Flops | Veteran Wellness | San Diego</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --sand: #EEE8DC;
+      --dark: #07121C;
+      --deep: #0D1B2A;
+      --ocean: #1B3A4B;
+      --teal: #2E7A8A;
+      --teal-light: #4A9BAB;
+      --rust: #B85C38;
+      --warm: #C49A4A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark); color: var(--sand); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+    .water-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 30% 60%, rgba(46,122,138,0.35) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(27,58,75,0.45) 0%, transparent 50%),
+        radial-gradient(ellipse at 55% 90%, rgba(46,122,138,0.28) 0%, transparent 40%),
+        radial-gradient(ellipse at 10% 10%, rgba(74,155,171,0.2) 0%, transparent 45%);
+      animation: waterShift 18s ease-in-out infinite alternate; }
+    @keyframes waterShift { 0%{opacity:.75;transform:scale(1) translateY(0)} 50%{opacity:1;transform:scale(1.05) translateY(-12px)} 100%{opacity:.8;transform:scale(1) translateY(0)} }
+    .tide-lines { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background: repeating-linear-gradient(180deg, transparent 0px, transparent 80px, rgba(46,122,138,0.08) 80px, rgba(46,122,138,0.08) 81px);
+      animation: tideDrift 25s linear infinite; }
+    @keyframes tideDrift { from{transform:translateY(0)} to{transform:translateY(81px)} }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 18px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: linear-gradient(to bottom, rgba(7,18,28,0.97) 0%, transparent 100%);
+      border-bottom: 1px solid rgba(46,122,138,0.12); }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; letter-spacing: .15em; color: var(--warm); text-decoration: none; }
+    .nav-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .nav-links a { color: var(--sand); text-decoration: none; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; opacity: .55; transition: opacity .2s, color .2s; }
+    .nav-links a:hover { opacity: 1; color: var(--teal-light); }
+
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 48px 80px; position: relative; overflow: hidden; z-index: 1; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(160deg, #07121C 0%, #0D2235 50%, #07121C 100%); }
+    .hero-glow { position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 65% 30%, rgba(46,122,138,0.2) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 75%, rgba(27,58,75,0.3) 0%, transparent 45%);
+      animation: glowPulse 10s ease-in-out infinite alternate; }
+    @keyframes glowPulse { 0%{opacity:.5} 100%{opacity:1} }
+    .hero-tag { position: relative; z-index: 2; font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 24px; opacity: 0; animation: fadeUp .8s .3s forwards; }
+    .hero-headline { position: relative; z-index: 2; font-family: 'Bebas Neue', sans-serif; font-size: clamp(4rem,10vw,9rem); line-height: .92; letter-spacing: .02em; color: var(--sand); opacity: 0; animation: fadeUp .8s .5s forwards; }
+    .hero-headline .accent { color: var(--teal-light); }
+    .hero-sub { position: relative; z-index: 2; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem,2.2vw,1.5rem); font-style: italic; color: rgba(180,210,220,.7); margin-top: 24px; max-width: 560px; line-height: 1.7; opacity: 0; animation: fadeUp .8s .7s forwards; }
+    .hero-cta { position: relative; z-index: 2; margin-top: 40px; display: flex; gap: 16px; align-items: center; opacity: 0; animation: fadeUp .8s .9s forwards; }
+    .btn-primary { background: var(--teal); color: var(--sand); padding: 14px 32px; text-decoration: none; font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; transition: background .3s, transform .2s; display: inline-block; }
+    .btn-primary:hover { background: var(--warm); color: var(--dark); transform: translateY(-2px); }
+    .btn-ghost { color: var(--sand); text-decoration: none; font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; opacity: .5; border-bottom: 1px solid rgba(180,210,220,.3); padding-bottom: 2px; transition: opacity .2s; }
+    .btn-ghost:hover { opacity: 1; }
+
+    section { position: relative; z-index: 1; padding: 100px 48px; }
+    .section-divider { height: 1px; background: linear-gradient(to right, transparent, rgba(46,122,138,.4), transparent); margin: 0 48px; position: relative; z-index: 1; }
+    .section-label { font-size: .68rem; letter-spacing: .3em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 48px; display: flex; align-items: center; gap: 16px; }
+    .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--teal); }
+
+    .about { background: linear-gradient(180deg, #0A1D2E 0%, #0D2235 100%); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .about-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem,5vw,4.5rem); line-height: 1; color: var(--sand); margin-bottom: 32px; }
+    .about-headline .teal { color: var(--teal-light); }
+    .about-body { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.9; color: rgba(220,235,240,.82); }
+    .about-body p + p { margin-top: 20px; }
+    .credentials { display: flex; flex-direction: column; gap: 18px; }
+    .credential-item { border-left: 2px solid rgba(46,122,138,.35); padding-left: 20px; transition: border-color .2s; }
+    .credential-item:hover { border-color: var(--teal-light); }
+    .credential-title { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 4px; }
+    .credential-desc { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(220,235,240,.6); line-height: 1.5; }
+
+    .journey { background: linear-gradient(180deg, #0D2235 0%, #091828 100%); }
+    .journey-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(180,210,220,.6); max-width: 600px; line-height: 1.7; margin-bottom: 64px; }
+    .journey-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .journey-card { position: relative; overflow: hidden; }
+    .journey-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; filter: saturate(.75) brightness(.88); transition: filter .5s, transform .5s; }
+    .journey-card:hover .journey-img { filter: saturate(1) brightness(.98); transform: scale(1.03); }
+    .journey-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(7,18,28,.92) 0%, transparent 100%); padding: 40px 24px 24px; }
+    .journey-line { height: 2px; background: linear-gradient(to right, var(--teal-light), transparent); margin-bottom: 10px; }
+    .journey-year { font-family: 'Bebas Neue', sans-serif; font-size: .85rem; letter-spacing: .2em; color: var(--teal-light); margin-bottom: 4px; }
+    .journey-caption { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--sand); line-height: 1.4; }
+
+    .services { background: linear-gradient(180deg, #091828 0%, #0A1D2E 100%); }
+    .services-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(180,210,220,.6); max-width: 600px; line-height: 1.7; margin-bottom: 64px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .service-card { background: rgba(13,27,42,.8); padding: 40px 32px; position: relative; overflow: hidden; transition: background .3s; }
+    .service-card:hover { background: rgba(27,58,75,.5); }
+    .service-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform .3s; }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-number { font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: rgba(46,122,138,.15); line-height: 1; margin-bottom: 16px; }
+    .service-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: .05em; color: var(--sand); margin-bottom: 12px; }
+    .service-desc { font-family: 'Cormorant Garamond', serif; font-size: 1rem; line-height: 1.75; color: rgba(220,235,240,.6); }
+
+    .philosophy { background: var(--dark); text-align: center; padding: 120px 48px; }
+    .philosophy-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem,3.5vw,2.8rem); font-style: italic; line-height: 1.55; color: var(--sand); max-width: 820px; margin: 0 auto 40px; }
+    .philosophy-quote .highlight { color: var(--teal-light); font-style: normal; }
+    .philosophy-attr { font-size: .72rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(180,210,220,.35); }
+
+    .pricing { background: linear-gradient(180deg, #0A1D2E 0%, #091828 100%); }
+    .pricing-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(180,210,220,.6); max-width: 600px; line-height: 1.7; margin-bottom: 64px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 32px; margin-bottom: 40px; }
+    .pricing-card { background: rgba(13,27,42,.8); padding: 40px 32px; border-top: 2px solid rgba(46,122,138,.35); transition: border-color .3s; }
+    .pricing-card:hover { border-color: var(--teal-light); }
+    .pricing-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: .05em; color: var(--sand); margin-bottom: 28px; }
+    .price-tier { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid rgba(46,122,138,.15); }
+    .price-tier:last-of-type { border-bottom: none; }
+    .tier-label { font-size: .78rem; letter-spacing: .06em; color: rgba(220,235,240,.55); }
+    .tier-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--warm); letter-spacing: .05em; }
+    .pricing-note { background: rgba(13,27,42,.6); border-left: 3px solid var(--teal); padding: 28px 32px; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-style: italic; color: rgba(220,235,240,.7); line-height: 1.75; }
+
+    .event { background: linear-gradient(180deg, #091828 0%, #0A1D2E 100%); }
+    .event-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .event-tag { display: inline-block; background: var(--rust); color: var(--sand); font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; padding: 6px 14px; margin-bottom: 24px; }
+    .event-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem,4vw,4rem); color: var(--sand); line-height: 1.05; margin-bottom: 20px; }
+    .event-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.8; color: rgba(220,235,240,.8); }
+    .event-details { display: flex; flex-direction: column; gap: 24px; }
+    .event-detail { display: flex; align-items: flex-start; gap: 16px; }
+    .detail-icon { width: 36px; height: 36px; background: rgba(46,122,138,.2); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; border: 1px solid rgba(46,122,138,.3); }
+    .detail-label { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 4px; }
+    .detail-value { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--sand); }
+    .detail-value a { color: var(--warm); text-decoration: none; }
+
+    .resources { background: linear-gradient(180deg, #0A1D2E 0%, #091828 100%); }
+    .resources-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(180,210,220,.6); max-width: 600px; line-height: 1.7; margin-bottom: 40px; }
+    .crisis-bar { background: rgba(184,92,56,.85); padding: 18px 32px; display: flex; justify-content: center; align-items: center; gap: 28px; flex-wrap: wrap; margin-bottom: 64px; }
+    .crisis-label { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(238,232,220,.85); }
+    .crisis-number { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: white; letter-spacing: .05em; }
+    .resources-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .resource-card { background: rgba(13,27,42,.8); padding: 32px 28px; border-bottom: 2px solid transparent; transition: border-color .3s, background .3s; }
+    .resource-card:hover { border-color: var(--teal-light); background: rgba(27,58,75,.3); }
+    .resource-icon { font-size: 1.6rem; margin-bottom: 14px; }
+    .resource-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: .05em; color: var(--teal-light); margin-bottom: 16px; }
+    .resource-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .resource-list li { font-family: 'Cormorant Garamond', serif; font-size: .95rem; color: rgba(220,235,240,.65); line-height: 1.5; padding-left: 12px; border-left: 1px solid rgba(46,122,138,.3); }
+    .resource-list li a { color: var(--teal-light); text-decoration: none; font-size: .82rem; display: block; margin-top: 2px; }
+    .resource-list li a:hover { color: var(--warm); }
+
+    .contact { background: linear-gradient(180deg, #091828 0%, #07121C 100%); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem,5vw,4.5rem); line-height: 1; margin-bottom: 24px; }
+    .contact-body { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; line-height: 1.8; color: rgba(220,235,240,.6); margin-bottom: 40px; }
+    .contact-info { display: flex; flex-direction: column; gap: 20px; }
+    .contact-item { display: flex; align-items: center; gap: 16px; }
+    .contact-dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; flex-shrink: 0; }
+    .contact-text { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--sand); }
+    .contact-text a { color: var(--warm); text-decoration: none; border-bottom: 1px solid rgba(196,154,74,.3); transition: border-color .2s; }
+    .contact-text a:hover { border-color: var(--warm); }
+    .contact-mission { background: rgba(13,27,42,.8); padding: 48px; border-left: 3px solid var(--teal); }
+    .mission-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: .08em; color: var(--teal-light); margin-bottom: 16px; }
+    .mission-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; line-height: 1.8; color: rgba(220,235,240,.65); }
+
+    footer { background: #040D14; padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(46,122,138,.2); position: relative; z-index: 1; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: .15em; color: var(--warm); }
+    .footer-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .9rem; color: rgba(220,235,240,.3); }
+    .footer-location { font-size: .72rem; letter-spacing: .15em; text-transform: uppercase; color: rgba(220,235,240,.25); }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    .reveal { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 72px 24px; }
+      .hero { padding: 0 24px 64px; }
+      .about-grid, .event-inner, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .services-grid, .journey-grid, .resources-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .section-divider { margin: 0 24px; }
+      .crisis-bar { padding: 16px 24px; gap: 16px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="water-bg"></div>
+  <div class="tide-lines"></div>
+
+  <nav>
+    <a href="#" class="nav-logo">Boots to Flip-Flops</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#services">Services</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#event">Event</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Connect</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-glow"></div>
+    <p class="hero-tag">Veteran Wellness · San Diego, CA</p>
+    <h1 class="hero-headline">
+      From the<br>
+      <span class="accent">Battlefield</span><br>
+      to the<br>
+      Healing Room.
+    </h1>
+    <p class="hero-sub">You survived the mission. Now let's navigate the transition — together.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Connect With Me</a>
+      <a href="#about" class="btn-ghost">My Story</a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="section-label">About Isai</div>
+    <div class="about-grid">
+      <div class="reveal">
+        <h2 class="about-headline">The same discipline that made us <span class="teal">warriors</span> can make us whole.</h2>
+        <div class="about-body">
+          <p>Isai Barahona is a United States Marine Corps veteran — Sergeant, 9 years active duty, combat deployments. After nearly a decade in uniform, he walked the same road so many veterans know: the loss of structure, the search for identity, the quiet struggle of rebuilding a life without a mission.</p>
+          <p>That journey didn't break him. It became his calling.</p>
+          <p>Over 11 years as a hands-on healer, Isai developed a deep understanding of how the body holds stress, trauma, and tension. In Biodynamic Craniosacral Therapy, we speak of fluid bodies, fluid tides, and profound stillness — the same stillness available to every veteran willing to go beneath the surface.</p>
+          <p>He brings what no textbook can teach: the hands, the heart, and the hard-won wisdom of someone who has walked through fire and chosen to help others find their way through.</p>
+        </div>
+      </div>
+      <div class="credentials reveal">
+        <div class="credential-item">
+          <div class="credential-title">Military Service</div>
+          <div class="credential-desc">Sergeant (E-5), 0331 Machine Gunner · U.S. Marine Corps · 9 Years Active Duty</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Somatic Healing</div>
+          <div class="credential-desc">11 Years Massage Therapy · Biodynamic Craniosacral Therapy — Module 6 of 12 (In Progress)</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Mental Health</div>
+          <div class="credential-desc">Certified Mental Health First Aid Practitioner · National Council for Mental Wellbeing (2026)</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Education</div>
+          <div class="credential-desc">BA Integral Studies · California Institute for Human Science<br>AS Holistic Healing · IPSB San Diego</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">VA Experience</div>
+          <div class="credential-desc">TAPS Coordinator Assistant · VA Hospital, La Jolla · Veteran resource navigation & peer support</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Movement</div>
+          <div class="credential-desc">Brazilian Jiu-Jitsu practitioner · Advocate for martial arts as veteran mental health tool</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- JOURNEY -->
+  <section class="journey" id="journey">
+    <div class="section-label">The Journey</div>
+    <p class="journey-intro reveal">Three chapters of one life — the warrior, the seeker, the healer. Every veteran carries all three within them.</p>
+    <div class="journey-grid">
+      <div class="journey-card reveal">
+        <img class="journey-img" src="https://i.imgur.com/4wCtfYC.jpeg" alt="Isai Barahona in Marine Corps uniform" />
+        <div class="journey-overlay">
+          <div class="journey-line"></div>
+          <div class="journey-year">2001 — 2010</div>
+          <div class="journey-caption">Sergeant Barahona · U.S. Marine Corps</div>
+        </div>
+      </div>
+      <div class="journey-card reveal">
+        <img class="journey-img" src="https://i.imgur.com/bPsrvvy.jpeg" alt="Isai Barahona" style="object-position:center center;" />
+        <div class="journey-overlay">
+          <div class="journey-line"></div>
+          <div class="journey-year">The Transition</div>
+          <div class="journey-caption">Finding the path · Rebuilding identity</div>
+        </div>
+      </div>
+      <div class="journey-card reveal">
+        <img class="journey-img" src="https://i.imgur.com/InOeeYA.jpeg" alt="Isai Barahona wellness facilitator" style="object-position:center center;" />
+        <div class="journey-overlay">
+          <div class="journey-line"></div>
+          <div class="journey-year">The Healer</div>
+          <div class="journey-caption">Boots to Flip-Flops · San Diego, CA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="section-label">What I Offer</div>
+    <p class="services-intro reveal">Every veteran's path is different. These offerings meet you where you are — whether you're just beginning to take off the boots, or already walking barefoot.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-number">01</div>
+        <div class="service-title">One-on-One Sessions</div>
+        <div class="service-desc">Private peer support combining breathwork, nervous system regulation, somatic awareness, and honest conversation. For veterans navigating identity, transition, PTSD, panic, and purpose.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">02</div>
+        <div class="service-title">Group Wellness Events</div>
+        <div class="service-desc">Facilitated group experiences for veterans — breathwork, meditation, visualization, and emotional regulation in a safe, secular, judgment-free setting. Community as medicine.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-number">03</div>
+        <div class="service-title">Somatic Healing</div>
+        <div class="service-desc">Hands-on healing through massage therapy and Biodynamic Craniosacral Therapy — addressing how the body stores trauma and tension, supporting the nervous system's return to stillness.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy">
+    <blockquote class="philosophy-quote reveal">
+      "Sitting with a veteran, building a bridge, walking them through meditation, breathwork, visualization, emotional regulation — <span class="highlight">that is the mission.</span>"
+    </blockquote>
+    <p class="philosophy-attr">— Isai Barahona, Founder · Boots to Flip-Flops</p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="section-label">Pricing</div>
+    <p class="pricing-intro reveal">Healing should be accessible to every veteran regardless of income. All sessions are offered on a sliding scale — cost is never a barrier to support.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-card-title">One-on-One Sessions · 60 min</div>
+        <div class="price-tier"><span class="tier-label">Low Income / Unemployed</span><span class="tier-price">$40 – 60</span></div>
+        <div class="price-tier"><span class="tier-label">Employed / Stable Income</span><span class="tier-price">$80 – 100</span></div>
+        <div class="price-tier"><span class="tier-label">Professional / Higher Income</span><span class="tier-price">$120 – 150</span></div>
+      </div>
+      <div class="pricing-card reveal">
+        <div class="pricing-card-title">Group Wellness Events</div>
+        <div class="price-tier"><span class="tier-label">Drop-In (Sliding Scale)</span><span class="tier-price">$10 – 40</span></div>
+        <div class="price-tier"><span class="tier-label">Private Group / Organization</span><span class="tier-price">$300 – 500</span></div>
+        <div class="price-tier"><span class="tier-label">VA / Nonprofit Contracts</span><span class="tier-price">Contact Me</span></div>
+      </div>
+    </div>
+    <div class="pricing-note reveal">
+      "No veteran is ever turned away for inability to pay. If cost is a barrier, reach out directly and we will find a way. The mission comes first."
+      <br><span style="font-style:normal;font-size:.85rem;opacity:.55;margin-top:8px;display:block;">— Isai Barahona</span>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- EVENT -->
+  <section class="event" id="event">
+    <div class="event-inner">
+      <div class="reveal">
+        <span class="event-tag">Upcoming · March 2026</span>
+        <h2 class="event-title">Veteran Healing Event</h2>
+        <p class="event-desc">A facilitated wellness experience for 20 veterans — breathwork, meditation, somatic healing, and nervous system regulation. Co-facilitated with the Tara Vitality wellness network in San Marcos, CA.</p>
+        <br>
+        <p class="event-desc" style="opacity:.7;font-size:.95rem;">This is what Boots to Flip-Flops looks like in practice — veterans in a room together, working through what the uniform couldn't protect us from, and discovering what comes next.</p>
+      </div>
+      <div class="event-details reveal">
+        <div class="event-detail">
+          <div class="detail-icon">📍</div>
+          <div><div class="detail-label">Location</div><div class="detail-value">San Marcos, CA<br><span style="opacity:.65;font-size:.9rem;">Tara Vitality Wellness Center</span></div></div>
+        </div>
+        <div class="event-detail">
+          <div class="detail-icon">📅</div>
+          <div><div class="detail-label">When</div><div class="detail-value">End of March 2026<br><span style="opacity:.65;font-size:.9rem;">Details upon registration</span></div></div>
+        </div>
+        <div class="event-detail">
+          <div class="detail-icon">🪖</div>
+          <div><div class="detail-label">Who It's For</div><div class="detail-value">Veterans only<br><span style="opacity:.65;font-size:.9rem;">All branches, all eras</span></div></div>
+        </div>
+        <div class="event-detail">
+          <div class="detail-icon">✉️</div>
+          <div><div class="detail-label">Reserve Your Spot</div><div class="detail-value"><a href="/cdn-cgi/l/email-protection#026b71636b3a606370636a6d6c6342656f636b6e2c616d6f"><span class="__cf_email__" data-cfemail="f8918b9991c09a998a9990979699b89f95999194d69b9795">[email&#160;protected]</span></a></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- RESOURCES -->
+  <section class="resources" id="resources">
+    <div class="section-label">Veteran Resources</div>
+    <p class="resources-intro reveal">You don't have to figure this out alone. Trusted resources for veterans navigating transition, housing, health, education, and community.</p>
+    <div class="crisis-bar reveal">
+      <span class="crisis-label">🆘 Veterans Crisis Line</span>
+      <span class="crisis-number">Call 988 · Press 1</span>
+      <span class="crisis-label">Text: 838255</span>
+      <span class="crisis-number">VeteransCrisisLine.net</span>
+    </div>
+    <div class="resources-grid">
+      <div class="resource-card reveal">
+        <div class="resource-icon">🎖️</div>
+        <div class="resource-card-title">Transition</div>
+        <ul class="resource-list">
+          <li>VA Transition Assistance Program<a href="https://www.va.gov" target="_blank">va.gov/tap</a></li>
+          <li>Boots to Business — SBA<a href="https://www.sba.gov/bootstobusiness" target="_blank">sba.gov/bootstobusiness</a></li>
+          <li>Veterans Village of San Diego<a href="https://www.vvsd.net" target="_blank">vvsd.net · (619) 393-2000</a></li>
+          <li>SD County Veteran Services<a href="tel:8586943222">(858) 694-3222</a></li>
+        </ul>
+      </div>
+      <div class="resource-card reveal">
+        <div class="resource-icon">🏠</div>
+        <div class="resource-card-title">Housing</div>
+        <ul class="resource-list">
+          <li>VA Home Loan — Zero Down<a href="https://www.va.gov/housing-assistance" target="_blank">va.gov/housing-assistance</a></li>
+          <li>HUD-VASH Emergency Housing<a href="tel:8585528585">VA San Diego: (858) 552-8585</a></li>
+          <li>Alpha Project Housing Navigation<a href="https://www.alphaproject.org" target="_blank">alphaproject.org · (619) 542-1877</a></li>
+          <li>211 San Diego — 24/7 Resources<a href="tel:211">Dial 2-1-1</a></li>
+        </ul>
+      </div>
+      <div class="resource-card reveal">
+        <div class="resource-icon">🎓</div>
+        <div class="resource-card-title">Education</div>
+        <ul class="resource-list">
+          <li>GI Bill — Post-9/11 Chapter 33<a href="https://www.va.gov/education" target="_blank">va.gov/education · (888) 442-4551</a></li>
+          <li>Vocational Rehab & Employment<a href="https://www.va.gov/careers-employment/vocational-rehabilitation" target="_blank">va.gov/vre</a></li>
+          <li>SDCCD Veterans Programs<a href="https://www.sdccd.edu/veterans" target="_blank">sdccd.edu/veterans</a></li>
+          <li>Warrior-Scholar Project<a href="https://www.warrior-scholar.org" target="_blank">warrior-scholar.org</a></li>
+        </ul>
+      </div>
+      <div class="resource-card reveal">
+        <div class="resource-icon">💼</div>
+        <div class="resource-card-title">Employment</div>
+        <ul class="resource-list">
+          <li>Hire Heroes USA — Free Coaching<a href="https://www.hireheroesusa.org" target="_blank">hireheroesusa.org · (844) 634-1520</a></li>
+          <li>USAJOBS — Federal Preference<a href="https://www.usajobs.gov" target="_blank">usajobs.gov</a></li>
+          <li>SD Workforce Partnership<a href="https://www.workforce.org" target="_blank">workforce.org · (619) 228-2900</a></li>
+          <li>Workshop for Warriors<a href="https://www.workshopforwarriors.org" target="_blank">workshopforwarriors.org</a></li>
+        </ul>
+      </div>
+      <div class="resource-card reveal">
+        <div class="resource-icon">🏥</div>
+        <div class="resource-card-title">Healthcare</div>
+        <ul class="resource-list">
+          <li>VA San Diego Healthcare<a href="tel:8585528585">(858) 552-8585 · va.gov/health-care</a></li>
+          <li>VA Whole Health — Free<a href="tel:8585528585">(858) 552-8585 · Ask for Whole Health</a></li>
+          <li>Wounded Warrior Project<a href="https://www.woundedwarriorproject.org" target="_blank">woundedwarriorproject.org</a></li>
+          <li>Family Health Centers SD<a href="https://www.fhcsd.org" target="_blank">fhcsd.org · (619) 515-2300</a></li>
+        </ul>
+      </div>
+      <div class="resource-card reveal">
+        <div class="resource-icon">🤝</div>
+        <div class="resource-card-title">Community</div>
+        <ul class="resource-list">
+          <li>VA Vet Center San Diego<a href="tel:8586421500">(858) 642-1500 · Mission Valley</a></li>
+          <li>Team Red White & Blue<a href="https://www.teamrwb.org" target="_blank">teamrwb.org — SD Chapter</a></li>
+          <li>The Mission Continues<a href="https://www.missioncontinues.org" target="_blank">missioncontinues.org</a></li>
+          <li>Boots to Flip-Flops<a href="/cdn-cgi/l/email-protection#c6afb5a7affea4a7b4a7aea9a8a786a1aba7afaae8a5a9ab"><span class="__cf_email__" data-cfemail="99f0eaf8f0a1fbf8ebf8f1f6f7f8d9fef4f8f0f5b7faf6f4">[email&#160;protected]</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-label">Connect</div>
+    <div class="contact-grid">
+      <div class="reveal">
+        <h2 class="contact-headline">Ready to take off the boots?</h2>
+        <p class="contact-body">Whether you're looking for one-on-one support, want to attend an upcoming event, or just want to have a conversation with someone who's been there — reach out. No pitch. No pressure. Just one veteran to another.</p>
+        <div class="contact-info">
+          <div class="contact-item"><div class="contact-dot"></div><div class="contact-text"><a href="/cdn-cgi/l/email-protection#472e34262e7f252635262f28292607202a262e2b6924282a"><span class="__cf_email__" data-cfemail="5c352f3d35643e3d2e3d3433323d1c3b313d3530723f3331">[email&#160;protected]</span></a></div></div>
+          <div class="contact-item"><div class="contact-dot"></div><div class="contact-text"><a href="tel:7604688737">(760) 468-8737</a></div></div>
+          <div class="contact-item"><div class="contact-dot"></div><div class="contact-text">San Diego, CA — serving veterans throughout San Diego County</div></div>
+        </div>
+      </div>
+      <div class="contact-mission reveal">
+        <div class="mission-title">The Boots to Flip-Flops Mission</div>
+        <div class="mission-text">In Biodynamic Craniosacral Therapy, we speak of fluid tides and deep stillness — the body's innate intelligence moving beneath the surface. Boots to Flip-Flops is built on this same principle: beneath the noise of transition, beneath the weight of service, there is a stillness in every veteran waiting to be found.
+          <br><br>This is a secular, peer-led, body-centered space. No dogma. No judgment. Just the work.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Boots to Flip-Flops</div>
+    <div class="footer-tagline">From the battlefield to the healing room — the mission continues.</div>
+    <div class="footer-location">San Diego, CA · Est. 2026</div>
+  </footer>
+
+  <script data-cfasyn
