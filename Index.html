@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boots to Flip-Flops | Veteran Wellness | San Diego</title>
+  <meta name="description" content="Boots to Flip-Flops — Veteran wellness, peer support, breathwork, and somatic healing in San Diego, CA. Founded by USMC veteran Isai Barahona." />
+  <meta name="keywords" content="veteran wellness, veteran mental health, peer support San Diego, PTSD support, veteran transition, breathwork, somatic healing, craniosacral therapy, Marine Corps veteran" />
+  <meta name="author" content="Isai Barahona" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://bootstoflipflops.com/" />
+  <meta property="og:title" content="Boots to Flip-Flops | Veteran Wellness | San Diego" />
+  <meta property="og:description" content="From the battlefield to the healing room. Veteran peer support, breathwork, and somatic healing in San Diego, CA." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://bootstoflipflops.com/" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Boots to Flip-Flops | Veteran Wellness" />
+  <meta name="twitter:description" content="From the battlefield to the healing room. Veteran peer support in San Diego, CA." />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="theme-color" content="#07121C" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --sand: #F5EFE2;
+      --dark: #07121C;
+      --deep: #0D1B2A;
+      --ocean: #1B3A4B;
+      --teal: #2E7A8A;
+      --teal-light: #5DB8CC;
+      --rust: #C96040;
+      --warm: #D4A84A;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--dark); color: var(--sand); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; cursor: none; }
+
+    /* ── SCROLL PROGRESS BAR ── */
+    #progress-bar { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: linear-gradient(to right, var(--teal), var(--teal-light), var(--warm)); z-index: 999; transition: width .1s linear; }
+
+    /* ── CUSTOM CURSOR ── */
+    .cursor { position: fixed; pointer-events: none; z-index: 9999; mix-blend-mode: screen; }
+    .cursor-dot { width: 6px; height: 6px; background: var(--teal-light); border-radius: 50%; transform: translate(-50%,-50%); transition: transform .1s; }
+    .cursor-ring { width: 36px; height: 36px; border: 1.5px solid rgba(93,184,204,.5); border-radius: 50%; transform: translate(-50%,-50%); transition: width .25s, height .25s, border-color .25s, transform .08s; }
+    body:has(a:hover) .cursor-ring,
+    body:has(button:hover) .cursor-ring { width: 52px; height: 52px; border-color: var(--teal-light); }
+
+    /* ── GRAIN OVERLAY ── */
+    body::after { content: ''; position: fixed; inset: 0; z-index: 998; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: .35; }
+
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0 40px;
+      display: flex; justify-content: space-between; align-items: stretch; height: 58px;
+      background: rgba(7,18,28,0.97); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(46,122,138,0.2); }
+    .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: .18em; color: var(--warm); text-decoration: none; display: flex; align-items: center; flex-shrink: 0; transition: letter-spacing .3s; }
+    .nav-logo:hover { letter-spacing: .24em; }
+    .nav-links { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; -ms-overflow-style: none; }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a { color: var(--sand); text-decoration: none; font-size: .66rem; letter-spacing: .14em; text-transform: uppercase; opacity: .5; transition: opacity .2s, color .2s, border-color .2s;
+      display: flex; align-items: center; padding: 0 16px; border-bottom: 2px solid transparent; white-space: nowrap; position: relative; overflow: hidden; }
+    .nav-links a:hover { opacity: 1; color: var(--teal-light); border-bottom-color: var(--teal-light); }
+    .nav-links a.active { opacity: 1; color: var(--teal-light); border-bottom-color: var(--teal-light); }
+
+    /* ── FLOATING SIDE DOTS ── */
+    .float-menu { position: fixed; right: 20px; top: 50%; -webkit-transform: translateY(-50%); transform: translateY(-50%); z-index: 90;
+      display: flex; flex-direction: column; gap: 12px; }
+    .float-menu a { width: 10px; height: 10px; border-radius: 50%; background: rgba(93,184,204,.2);
+      border: 1.5px solid rgba(93,184,204,.45); display: block;
+      -webkit-transition: background .25s, transform .25s, box-shadow .25s;
+      transition: background .25s, transform .25s, box-shadow .25s; position: relative; }
+    .float-menu a:hover, .float-menu a.active { background: var(--teal-light); transform: scale(1.6); box-shadow: 0 0 12px rgba(93,184,204,.6); }
+    .float-menu a .float-label { position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
+      background: rgba(7,18,28,.96); color: var(--teal-light); font-size: .6rem; letter-spacing: .14em;
+      text-transform: uppercase; white-space: nowrap; padding: 5px 12px; border: 1px solid rgba(93,184,204,.25);
+      opacity: 0; pointer-events: none; transition: opacity .2s; }
+    .float-menu a:hover .float-label { opacity: 1; }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top { position: fixed; bottom: 28px; right: 18px; z-index: 90;
+      width: 44px; height: 44px; background: rgba(7,18,28,.95); border: 1px solid rgba(93,184,204,.35);
+      display: flex; align-items: center; justify-content: center; cursor: none;
+      opacity: 0; pointer-events: none; transition: opacity .3s, background .2s, transform .2s;
+      text-decoration: none; color: var(--teal-light); font-size: 1.1rem; }
+    .back-to-top.visible { opacity: 1; pointer-events: all; }
+    .back-to-top:hover { background: var(--teal); transform: translateY(-4px); box-shadow: 0 8px 24px rgba(46,122,138,.4); }
+
+    /* ── HERO ── */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 0 56px 100px; position: relative; overflow: hidden; z-index: 1;
+      background: linear-gradient(160deg, #04090F 0%, #0B1E30 45%, #071420 100%); }
+    .hero-canvas { position: absolute; inset: 0; z-index: 0; opacity: .6; }
+    .hero-glow { position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse at 70% 25%, rgba(46,122,138,.18) 0%, transparent 55%),
+                  radial-gradient(ellipse at 10% 80%, rgba(27,58,75,.28) 0%, transparent 45%); }
+    .hero-tag { position: relative; z-index: 2; font-size: .7rem; letter-spacing: .38em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 28px; opacity: 0; animation: fadeUp .9s .4s forwards; }
+    .hero-headline { position: relative; z-index: 2; font-family: 'Bebas Neue', sans-serif; font-size: clamp(4.5rem,11vw,10rem); line-height: .9; letter-spacing: .02em; color: var(--sand); opacity: 0; animation: fadeUp .9s .6s forwards; }
+    .hero-headline .accent { color: var(--teal-light); display: block; }
+    .hero-sub { position: relative; z-index: 2; font-family: 'Cormorant Garamond', serif; font-size: clamp(1.15rem,2.4vw,1.6rem); font-style: italic; color: rgba(180,215,225,.65); margin-top: 28px; max-width: 520px; line-height: 1.75; opacity: 0; animation: fadeUp .9s .8s forwards; }
+    .hero-cta { position: relative; z-index: 2; margin-top: 44px; display: flex; gap: 20px; align-items: center; opacity: 0; animation: fadeUp .9s 1s forwards; }
+    .btn-primary { background: var(--teal); color: var(--sand); padding: 15px 36px; text-decoration: none; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; font-weight: 500; transition: background .3s, transform .2s, box-shadow .3s; display: inline-block; position: relative; overflow: hidden; }
+    .btn-primary::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,.08) 100%); }
+    .btn-primary:hover { background: var(--warm); color: var(--dark); transform: translateY(-3px); box-shadow: 0 12px 32px rgba(212,168,74,.3); }
+    .btn-ghost { color: var(--sand); text-decoration: none; font-size: .76rem; letter-spacing: .18em; text-transform: uppercase; opacity: .45; border-bottom: 1px solid rgba(180,210,220,.25); padding-bottom: 3px; transition: opacity .25s, letter-spacing .25s; }
+    .btn-ghost:hover { opacity: 1; letter-spacing: .22em; }
+
+    /* ── HERO WAVE SVG ── */
+    .hero-wave { position: absolute; bottom: -2px; left: 0; right: 0; z-index: 1; }
+    .hero-wave svg { display: block; width: 100%; }
+
+    /* ── STATS BAR ── */
+    .stats-bar { background: rgba(13,27,42,.95); border-top: 1px solid rgba(46,122,138,.2); border-bottom: 1px solid rgba(46,122,138,.2); padding: 32px 56px; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; gap: 24px; position: relative; z-index: 1; }
+    .stat-item { text-align: center; }
+    .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--teal-light); letter-spacing: .04em; line-height: 1; display: block; }
+    .stat-label { font-size: .65rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(180,210,220,.5); margin-top: 4px; display: block; }
+    .stat-divider { width: 1px; height: 48px; background: rgba(46,122,138,.25); }
+
+    /* ── SECTIONS ── */
+    section { position: relative; z-index: 1; padding: 112px 56px; }
+    .section-divider { height: 1px; background: linear-gradient(to right, transparent, rgba(46,122,138,.35), transparent); margin: 0 56px; position: relative; z-index: 1; }
+    .section-label { font-size: .66rem; letter-spacing: .35em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 52px; display: flex; align-items: center; gap: 18px; }
+    .section-label::after { content: ''; flex: 1; max-width: 56px; height: 1px; background: linear-gradient(to right, var(--teal), transparent); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-left { opacity: 0; transform: translateX(-28px); transition: opacity .75s ease, transform .75s ease; }
+    .reveal-left.visible { opacity: 1; transform: none; }
+    .reveal-scale { opacity: 0; transform: scale(.96); transition: opacity .7s ease, transform .7s ease; }
+    .reveal-scale.visible { opacity: 1; transform: none; }
+
+    /* ── ABOUT ── */
+    .about { background: linear-gradient(180deg, #091828 0%, #0D2235 100%); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
+    .about-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.6rem,5vw,4.8rem); line-height: .96; color: var(--sand); margin-bottom: 36px; }
+    .about-headline .teal { color: var(--teal-light); }
+    .about-body { font-family: 'Cormorant Garamond', serif; font-size: 1.18rem; line-height: 1.95; color: rgba(238,242,245,.92); }
+    .about-body p + p { margin-top: 22px; }
+    .credentials { display: flex; flex-direction: column; gap: 0; }
+    .credential-item { border-left: 2px solid rgba(46,122,138,.3); padding: 18px 20px; transition: border-color .25s, background .25s; cursor: default; position: relative; overflow: hidden; }
+    .credential-item + .credential-item { border-top: 1px solid rgba(46,122,138,.1); }
+    .credential-item:hover { border-color: var(--teal-light); background: rgba(46,122,138,.07); }
+    .credential-title { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: var(--teal-light); margin-bottom: 5px; font-weight: 500; }
+    .credential-desc { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(230,240,245,.82); line-height: 1.55; }
+
+    /* ── JOURNEY ── */
+    .journey { background: linear-gradient(180deg, #0D2235 0%, #091828 100%); }
+    .journey-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-style: italic; color: rgba(220,235,242,.8); max-width: 580px; line-height: 1.75; margin-bottom: 68px; }
+    .journey-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .journey-card { position: relative; overflow: hidden; cursor: none; }
+    .journey-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(93,184,204,.12) 0%, transparent 60%); opacity: 0; transition: opacity .5s; }
+    .journey-card:hover::after { opacity: 1; }
+    .journey-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; filter: saturate(.85) brightness(.88); transition: filter .6s, transform .6s; }
+    .journey-card:hover .journey-img { filter: saturate(1.05) brightness(1); transform: scale(1.04); }
+    .journey-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(4,9,15,.96) 0%, rgba(7,18,28,.4) 60%, transparent 100%); padding: 48px 24px 28px; }
+    .journey-line { height: 2px; background: linear-gradient(to right, var(--teal-light), transparent); margin-bottom: 12px; transition: width .4s; width: 40%; }
+    .journey-card:hover .journey-line { width: 100%; }
+    .journey-year { font-family: 'Bebas Neue', sans-serif; font-size: .82rem; letter-spacing: .25em; color: var(--teal-light); margin-bottom: 5px; }
+    .journey-caption { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; font-style: italic; color: var(--sand); line-height: 1.45; }
+
+    /* ── SERVICES / SESSIONS ── */
+    .services { background: linear-gradient(180deg, #091828 0%, #0A1D2E 100%); }
+    .services-intro { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem,2.2vw,1.45rem); font-style: italic; color: rgba(220,235,242,.8); max-width: 660px; line-height: 1.85; margin-bottom: 56px; }
+    .session-tabs { display: flex; border-bottom: 1px solid rgba(46,122,138,.2); margin-bottom: 0; }
+    .session-tab { background: none; border: none; color: rgba(220,235,242,.35); font-family: 'Bebas Neue', sans-serif; font-size: .95rem; letter-spacing: .14em; text-transform: uppercase; padding: 18px 36px 16px; cursor: none; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .25s, border-color .25s; line-height: 1.3; text-align: center; position: relative; overflow: hidden; }
+    .session-tab:hover { color: rgba(220,235,242,.7); }
+    .session-tab.active { color: var(--teal-light); border-bottom-color: var(--teal-light); }
+    .session-panels { background: rgba(8,20,32,.7); padding: 56px 48px; border: 1px solid rgba(46,122,138,.12); border-top: none; }
+    .session-panel { display: none; }
+    .session-panel.active { display: block; animation: panelFade .4s ease forwards; }
+    @keyframes panelFade { from { opacity:0; transform: translateY(10px); } to { opacity:1; transform:none; } }
+    .session-icon { font-size: 2.2rem; margin-bottom: 22px; }
+    .session-meta { font-size: .63rem; letter-spacing: .22em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+    .session-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem,4vw,3.2rem); letter-spacing: .04em; color: var(--sand); margin-bottom: 28px; line-height: 1.02; }
+    .session-desc { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; line-height: 1.88; color: rgba(220,235,242,.78); margin-bottom: 16px; max-width: 680px; }
+    .session-bullets { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 36px; border-top: 1px solid rgba(46,122,138,.18); }
+    .bullet-item { padding: 18px 22px 18px 18px; border-left: 2px solid rgba(93,184,204,.25); border-bottom: 1px solid rgba(46,122,138,.1); font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: rgba(220,235,242,.8); line-height: 1.5; transition: border-color .2s, background .2s; }
+    .bullet-item:hover { border-color: var(--teal-light); background: rgba(46,122,138,.06); }
+
+    /* ── PHILOSOPHY ── */
+    .philosophy { background: linear-gradient(160deg, #040C14 0%, #081624 100%); text-align: center; padding: 140px 56px; position: relative; overflow: hidden; }
+    .philosophy::before { content: '\201C'; position: absolute; top: 40px; left: 50%; transform: translateX(-50%); font-family: 'Cormorant Garamond', serif; font-size: 18rem; color: rgba(46,122,138,.06); line-height: 1; pointer-events: none; }
+    .philosophy-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.65rem,3.5vw,2.9rem); font-style: italic; line-height: 1.6; color: var(--sand); max-width: 840px; margin: 0 auto 44px; position: relative; z-index: 1; }
+    .philosophy-quote .highlight { color: var(--teal-light); font-style: normal; }
+    .philosophy-attr { font-size: .68rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(180,210,220,.3); }
+
+    /* ── PRICING ── */
+    .pricing { background: linear-gradient(180deg, #0A1D2E 0%, #091828 100%); }
+    .pricing-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(220,235,242,.8); max-width: 580px; line-height: 1.75; margin-bottom: 64px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; margin-bottom: 36px; }
+    .pricing-card { background: rgba(10,22,36,.8); padding: 44px 36px; border-top: 2px solid rgba(46,122,138,.28); transition: border-color .3s, box-shadow .3s, transform .25s; position: relative; overflow: hidden; }
+    .pricing-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 100%; background: linear-gradient(135deg, rgba(46,122,138,.06) 0%, transparent 60%); opacity: 0; transition: opacity .3s; }
+    .pricing-card:hover { border-color: var(--teal-light); box-shadow: 0 0 40px rgba(93,184,204,.1); transform: translateY(-3px); }
+    .pricing-card:hover::before { opacity: 1; }
+    .pricing-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.45rem; letter-spacing: .06em; color: var(--sand); margin-bottom: 32px; }
+    .price-tier { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid rgba(46,122,138,.12); transition: padding-left .2s; }
+    .price-tier:hover { padding-left: 6px; }
+    .price-tier:last-of-type { border-bottom: none; }
+    .tier-label { font-size: .76rem; letter-spacing: .06em; color: rgba(230,240,245,.8); }
+    .tier-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.45rem; color: var(--warm); letter-spacing: .05em; }
+    .pricing-note { background: rgba(10,22,36,.7); border-left: 3px solid var(--teal); padding: 30px 36px; font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; font-style: italic; color: rgba(220,235,240,.65); line-height: 1.8; }
+
+    /* ── RESOURCES ── */
+    .resources { background: linear-gradient(180deg, #0A1D2E 0%, #091828 100%); }
+    .resources-intro { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: rgba(220,235,242,.8); max-width: 580px; line-height: 1.75; margin-bottom: 40px; }
+
+    /* Crisis bar */
+    .crisis-bar-wrap { margin-bottom: 52px; }
+    .crisis-bar { background: var(--rust); padding: 26px 36px; max-width: 460px; position: relative; overflow: hidden; }
+    .crisis-bar::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,.08) 0%, transparent 50%); }
+    .crisis-bar-eyebrow { font-size: .63rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 12px; }
+    .crisis-bar-number { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: #fff; letter-spacing: .04em; line-height: 1.1; }
+    .crisis-bar-sub { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(255,240,230,.7); margin-top: 6px; font-style: italic; }
+
+    /* Mental health 3-col panel */
+    .mh-panel { background: rgba(10,22,36,.85); padding: 48px 44px; margin-bottom: 56px; border: 1px solid rgba(46,122,138,.15); }
+    .mh-panel-icon { font-size: 1.8rem; margin-bottom: 10px; }
+    .mh-panel-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.45rem; letter-spacing: .09em; color: var(--teal-light); margin-bottom: 36px; }
+    .mh-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 36px; }
+    .mh-col-label { font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; margin-bottom: 22px; display: flex; align-items: center; gap: 8px; }
+    .mh-col-label.crisis { color: var(--rust); }
+    .mh-col-label.va { color: var(--warm); }
+    .mh-col-label.community { color: var(--teal-light); }
+    .mh-entries { display: flex; flex-direction: column; gap: 18px; }
+    .mh-entry-name { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--sand); line-height: 1.35; margin-bottom: 3px; }
+    .mh-entry-detail { font-size: .8rem; color: var(--teal-light); line-height: 1.45; }
+
+    /* Resource cards grid */
+    .resources-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .resource-card { background: rgba(10,22,36,.9); padding: 34px 30px; border-bottom: 2px solid transparent; transition: border-color .3s, background .3s, transform .25s; position: relative; overflow: hidden; cursor: default; }
+    .resource-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(93,184,204,.25), transparent); }
+    .resource-card:hover { border-color: var(--teal-light); background: rgba(20,44,64,.55); transform: translateY(-4px); }
+    .resource-icon { font-size: 1.7rem; margin-bottom: 16px; }
+    .resource-card-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.25rem; letter-spacing: .06em; color: var(--teal-light); margin-bottom: 18px; }
+    .resource-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .resource-list li { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(235,245,250,.88); line-height: 1.5; padding-left: 14px; border-left: 2px solid rgba(93,184,204,.3); transition: border-color .2s; }
+    .resource-list li:hover { border-color: var(--teal-light); }
+    .resource-list li a { color: var(--teal-light); text-decoration: none; font-size: .83rem; display: block; margin-top: 3px; transition: color .2s; }
+    .resource-list li a:hover { color: var(--warm); }
+
+    /* ── CONTACT ── */
+    .contact { background: linear-gradient(180deg, #091828 0%, #04090F 100%); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 88px; align-items: start; }
+    .contact-headline { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.6rem,5vw,4.8rem); line-height: .96; margin-bottom: 26px; }
+    .contact-body { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; line-height: 1.85; color: rgba(230,240,245,.82); margin-bottom: 44px; }
+    .contact-info { display: flex; flex-direction: column; gap: 22px; }
+    .contact-item { display: flex; align-items: center; gap: 18px; padding: 14px 0; border-bottom: 1px solid rgba(46,122,138,.12); transition: padding-left .2s; }
+    .contact-item:hover { padding-left: 6px; }
+    .contact-dot { width: 7px; height: 7px; background: var(--teal); border-radius: 50%; flex-shrink: 0; box-shadow: 0 0 8px rgba(46,122,138,.6); }
+    .contact-text { font-family: 'Cormorant Garamond', serif; font-size: 1.12rem; color: var(--sand); }
+    .contact-text a { color: var(--warm); text-decoration: none; border-bottom: 1px solid rgba(196,154,74,.25); transition: border-color .2s; }
+    .contact-text a:hover { border-color: var(--warm); }
+    .contact-mission { background: rgba(10,22,36,.8); padding: 52px; border-left: 3px solid var(--teal); position: relative; overflow: hidden; }
+    .contact-mission::after { content: ''; position: absolute; top: -40px; right: -40px; width: 140px; height: 140px; border-radius: 50%; background: radial-gradient(circle, rgba(46,122,138,.12) 0%, transparent 70%); }
+    .mission-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.35rem; letter-spacing: .1em; color: var(--teal-light); margin-bottom: 20px; }
+    .mission-text { font-family: 'Cormorant Garamond', serif; font-size: 1.08rem; line-height: 1.85; color: rgba(230,240,245,.82); }
+
+    /* ── FOOTER ── */
+    footer { background: #030A10; padding: 44px 56px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(46,122,138,.15); position: relative; z-index: 1; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: .18em; color: var(--warm); }
+    .footer-tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: .9rem; color: rgba(220,235,240,.25); }
+    .footer-location { font-size: .68rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(220,235,240,.2); }
+
+    /* ── GLOW CLICK EFFECTS ── */
+    .nav-links a, .session-tab, .resource-card, .pricing-card, .credential-item { position: relative; overflow: hidden; }
+    .glow-burst { position: absolute; border-radius: 50%; pointer-events: none; transform: scale(0);
+      background: radial-gradient(circle, rgba(93,184,204,.55) 0%, rgba(46,122,138,.22) 45%, transparent 70%);
+      animation: glowPulseClick .65s ease-out forwards; z-index: 10; }
+    @keyframes glowPulseClick { 0%{transform:scale(0);opacity:1} 60%{transform:scale(1);opacity:.7} 100%{transform:scale(1.5);opacity:0} }
+    .nav-links a.glow-active { color:var(--teal-light)!important; opacity:1!important; text-shadow:0 0 14px rgba(93,184,204,.7); border-bottom-color:var(--teal-light)!important; }
+    .session-tab.glow-active { color:var(--teal-light)!important; text-shadow:0 0 16px rgba(93,184,204,.8); }
+    .resource-card.glow-active { border-color:var(--teal-light); background:rgba(27,58,75,.55); box-shadow:0 0 28px rgba(93,184,204,.18); }
+    .pricing-card.glow-active { border-color:var(--teal-light); box-shadow:0 0 32px rgba(93,184,204,.2); }
+    .credential-item.glow-active { border-color:var(--teal-light); box-shadow:-4px 0 20px rgba(93,184,204,.28); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(32px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 56px; }
+      .journey-grid, .pricing-grid { grid-template-columns: repeat(2,1fr); }
+      .resources-grid { grid-template-columns: repeat(2,1fr); }
+      .mh-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      body { cursor: auto; }
+      .cursor { display: none; }
+      nav { padding: 0 16px; }
+      .nav-logo { font-size: .9rem; margin-right: 8px; }
+      .nav-links a { padding: 0 10px; font-size: .58rem; }
+      section { padding: 72px 24px; }
+      .hero { padding: 0 24px 80px; }
+      .stats-bar { padding: 24px; }
+      .stat-divider { display: none; }
+      .journey-grid, .resources-grid, .pricing-grid { grid-template-columns: 1fr; }
+      .session-tab { padding: 12px 18px; font-size: .82rem; }
+      .session-panels { padding: 32px 24px; }
+      .session-bullets { grid-template-columns: 1fr; }
+      .bullet-item { width: 100%; }
+      .section-divider { margin: 0 24px; }
+      footer { flex-direction: column; gap: 14px; text-align: center; padding: 32px 24px; }
+      .back-to-top { bottom: 18px; right: 14px; }
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- PROGRESS BAR -->
+
+  <div id="progress-bar"></div>
+
+  <!-- CUSTOM CURSOR -->
+
+  <div class="cursor cursor-ring" id="cursorRing"></div>
+  <div class="cursor cursor-dot" id="cursorDot"></div>
+
+  <!-- FLOATING SIDE DOTS -->
+
+  <div class="float-menu">
+    <a href="#about"><span class="float-label">About</span></a>
+    <a href="#journey"><span class="float-label">Journey</span></a>
+    <a href="#services"><span class="float-label">Sessions</span></a>
+    <a href="#pricing"><span class="float-label">Pricing</span></a>
+    <a href="#resources"><span class="float-label">Resources</span></a>
+    <a href="#contact"><span class="float-label">Connect</span></a>
+  </div>
+
+  <!-- BACK TO TOP -->
+
+<a href="#" class="back-to-top" aria-label="Back to top">⇧</a>
+
+  <!-- NAV -->
+
+  <nav>
+    <a href="#" class="nav-logo">Boots to Flip-Flops</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#journey">Journey</a>
+      <a href="#services">Sessions</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#resources">Resources</a>
+      <a href="#contact">Connect</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <canvas class="hero-canvas" id="heroCanvas"></canvas>
+    <div class="hero-glow"></div>
+    <p class="hero-tag">Veteran Wellness · San Diego, CA</p>
+    <h1 class="hero-headline">
+      From the<br>
+      <span class="accent">Battlefield</span>
+      to the<br>
+      Healing Room.
+    </h1>
+    <p class="hero-sub">You survived the mission. Now let's navigate the transition — together.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Connect With Me</a>
+      <a href="#about" class="btn-ghost">My Story</a>
+    </div>
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 64" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 32C240 0 480 64 720 32C960 0 1200 64 1440 32V64H0V32Z" fill="#091828"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+
+  <div class="stats-bar reveal">
+    <div class="stat-item">
+      <span class="stat-number" data-count="9">0</span>
+      <span class="stat-label">Years Military Service</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-number" data-count="11">0</span>
+      <span class="stat-label">Years Hands-On Healing</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-number">2026</span>
+      <span class="stat-label">MHFA Certified</span>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- ABOUT -->
+
+  <section class="about" id="about">
+    <div class="section-label">About Isai</div>
+    <div class="about-grid">
+      <div class="reveal-left">
+        <h2 class="about-headline">The same discipline that made us <span class="teal">warriors</span> can make us whole.</h2>
+        <div class="about-body">
+          <p>Isai Barahona is a United States Marine Corps veteran — Sergeant, 9 years active duty, combat deployments. After nearly a decade in uniform, he walked the same road so many veterans know: the loss of structure, the search for identity, the quiet struggle of rebuilding a life without a mission.</p>
+          <p>That journey didn't break him. It became his calling.</p>
+          <p>Over 11 years as a hands-on healer, Isai developed a deep understanding of how the body holds stress, trauma, and tension. In Biodynamic Craniosacral Therapy, we speak of fluid bodies, fluid tides, and profound stillness — the same stillness available to every veteran willing to go beneath the surface.</p>
+          <p>He brings what no textbook can teach: the hands, the heart, and the hard-won wisdom of someone who has walked through fire and chosen to help others find their way through.</p>
+        </div>
+      </div>
+      <div class="credentials reveal">
+        <div class="credential-item">
+          <div class="credential-title">Military Service</div>
+          <div class="credential-desc">Sergeant (E-5), 0331 Machine Gunner · U.S. Marine Corps · 9 Years Active Duty</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Somatic Healing</div>
+          <div class="credential-desc">11 Years Massage Therapy · Biodynamic Craniosacral Therapy — Module 6 of 12 (In Progress)</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Mental Health</div>
+          <div class="credential-desc">Certified Mental Health First Aid Practitioner · National Council for Mental Wellbeing (2026)</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Education</div>
+          <div class="credential-desc">BA Integral Studies · California Institute for Human Science<br>AS Holistic Healing · IPSB San Diego</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">VA Experience</div>
+          <div class="credential-desc">TAPS Coordinator Assistant · VA Hospital, La Jolla · Veteran resource navigation & peer support</div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-title">Movement</div>
+          <div class="credential-desc">Brazilian Jiu-Jitsu practitioner · Advocate for martial arts as veteran mental health tool</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- JOURNEY -->
+
+  <section class="journey" id="journey">
+    <div class="section-label">The Journey</div>
+    <p class="journey-intro reveal">Three chapters of one life — the warrior, the seeker, the healer. Every veteran carries all three within them.</p>
+    <div class="journey-grid">
+      <div class="journey-card reveal">
+        <img class="journey-img" src="https://i.imgur.com/4wCtfYC.jpeg" alt="Isai Barahona in Marine Corps uniform" />
+        <div class="journey-overlay">
+          <div class="journey-line"></div>
+          <div class="journey-year">2001 — 2010</div>
+          <div class="journey-caption">Sergeant Barahona · U.S. Marine Corps</div>
+        </div>
+      </div>
+      <div class="journey-card reveal" style="transition-delay:.15s">
+        <img class="journey-img" src="https://i.imgur.com/bPsrvvy.jpeg" alt="Isai Barahona" style="object-position:center center;" />
+        <div class="journey-overlay">
+          <div class="journey-line"></div>
+          <div class="journey-year">The Transition</div>
+          <div class="journey-caption">Finding the path · Rebuilding identity</div>
+        </div>
+      </div>
+      <div class="journey-card reveal" style="transition-delay:.3s">
+        <img class="journey-img" src="https://i.imgur.com/InOeeYA.jpeg" alt="Isai Barahona wellness facilitator" style="object-position:center center;" />
+        <div class="journey-overlay">
+          <div class="journey-line"></div>
+          <div class="journey-year">The Healer</div>
+          <div class="journey-caption">Boots to Flip-Flops · San Diego, CA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- SESSIONS -->
+
+  <section class="services" id="services">
+    <div class="section-label">Sessions</div>
+    <p class="services-intro reveal">Every veteran's path is different. Sessions are shaped by you — your needs, your pace, your comfort. You always have full control over how we work together.</p>
+    <div class="session-tabs reveal">
+      <button class="session-tab active" data-tab="peer">Peer Support<br>Sessions</button>
+      <button class="session-tab" data-tab="bodywork">Bodywork<br>Sessions</button>
+      <button class="session-tab" data-tab="group">Group<br>Wellness</button>
+    </div>
+    <div class="session-panels">
+      <div class="session-panel active" id="tab-peer">
+        <div class="session-icon">🪑</div>
+        <div class="session-meta">In-Person Only · Chair Setting · San Diego, CA</div>
+        <h3 class="session-title">One-on-One Peer Support</h3>
+        <p class="session-desc">Sitting across from a fellow veteran who has been there. No clinical distance, no diagnosis — just honest conversation in a safe, secular space. Fully clothed, relaxed, no table required. All sessions are in-person in San Diego County.</p>
+        <div class="session-bullets">
+          <div class="bullet-item">Navigating identity loss and the transition out of uniform</div>
+          <div class="bullet-item">Working through feelings — anger, grief, numbness, restlessness</div>
+          <div class="bullet-item">Breathwork and nervous system regulation techniques</div>
+          <div class="bullet-item">Guided meditation and visualization</div>
+          <div class="bullet-item">Building structure, purpose, and mission in civilian life</div>
+          <div class="bullet-item">Processing panic, hyperarousal, and emotional overwhelm</div>
+          <div class="bullet-item">Peer support rooted in shared military experience</div>
+          <div class="bullet-item">Somatic awareness — how the body holds stress and trauma</div>
+        </div>
+      </div>
+      <div class="session-panel" id="tab-bodywork">
+        <div class="session-icon">🙌</div>
+        <div class="session-meta">In-Person · Mobile / In-Home Available · San Diego County</div>
+        <h3 class="session-title">Bodywork Sessions</h3>
+        <p class="session-desc">Eleven years of hands-on healing. The body holds what the mind hasn't processed yet — trauma, hypervigilance, and tension live in the tissue. Sessions draw from massage therapy and Biodynamic Craniosacral Therapy. Mobile service available across San Diego County.</p>
+        <div class="session-bullets">
+          <div class="bullet-item">Massage therapy — deep tissue, Swedish, trauma-informed</div>
+          <div class="bullet-item">Biodynamic Craniosacral Therapy (BCST)</div>
+          <div class="bullet-item">Nervous system regulation through touch</div>
+          <div class="bullet-item">Releasing stored tension from hypervigilance</div>
+          <div class="bullet-item">Supporting the body's return to stillness</div>
+          <div class="bullet-item">Trauma-informed approach — fully clothed option available</div>
+          <div class="bullet-item">Mobile service — Isai brings the table to you</div>
+          <div class="bullet-item">By appointment across San Diego County</div>
+        </div>
+      </div>
+      <div class="session-panel" id="tab-group">
+        <div class="session-icon">🔥</div>
+        <div class="session-meta">In-Person · Group Format · San Diego &amp; Surrounding Areas</div>
+        <h3 class="session-title">Group Wellness Events</h3>
+        <p class="session-desc">There is something that happens when veterans are in a room together — a recognition, a dropping of the mask, a permission to be human. Community is medicine. Secular, judgment-free, peer-led.</p>
+        <div class="session-bullets">
+          <div class="bullet-item">Guided breathwork and nervous system regulation</div>
+          <div class="bullet-item">Meditation and visualization practices</div>
+          <div class="bullet-item">Emotional regulation in a group setting</div>
+          <div class="bullet-item">Peer sharing — no hierarchy, no clinical structure</div>
+          <div class="bullet-item">Drop-in events open to all veterans</div>
+          <div class="bullet-item">Private groups for organizations and units</div>
+          <div class="bullet-item">VA and nonprofit partnership contracts available</div>
+          <div class="bullet-item">Sliding scale — no veteran turned away for cost</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+
+  <section class="philosophy">
+    <blockquote class="philosophy-quote reveal">
+      "Sitting with a veteran, building a bridge, walking them through meditation, breathwork, visualization, emotional regulation — <span class="highlight">that is the mission.</span>"
+    </blockquote>
+    <p class="philosophy-attr">— Isai Barahona, Founder · Boots to Flip-Flops</p>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- PRICING -->
+
+  <section class="pricing" id="pricing">
+    <div class="section-label">Pricing</div>
+    <p class="pricing-intro reveal">Healing should be accessible to every veteran regardless of income. All sessions are offered on a sliding scale — cost is never a barrier to support.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="pricing-card-title">One-on-One Sessions · 60 min</div>
+        <div class="price-tier"><span class="tier-label">Low Income / Unemployed</span><span class="tier-price">$40 – 60</span></div>
+        <div class="price-tier"><span class="tier-label">Employed / Stable Income</span><span class="tier-price">$80 – 100</span></div>
+        <div class="price-tier"><span class="tier-label">Professional / Higher Income</span><span class="tier-price">$120 – 150</span></div>
+      </div>
+      <div class="pricing-card reveal" style="transition-delay:.15s">
+        <div class="pricing-card-title">Group Wellness Events</div>
+        <div class="price-tier"><span class="tier-label">Drop-In (Sliding Scale)</span><span class="tier-price">$10 – 40</span></div>
+        <div class="price-tier"><span class="tier-label">Private Group / Organization</span><span class="tier-price">$300 – 500</span></div>
+        <div class="price-tier"><span class="tier-label">VA / Nonprofit Contracts</span><span class="tier-price">Contact Me</span></div>
+      </div>
+    </div>
+    <div class="pricing-note reveal">
+      "No veteran is ever turned away for inability to pay. If cost is a barrier, reach out directly and we will find a way. The mission comes first."
+      <br><span style="font-style:normal;font-size:.83rem;opacity:.5;margin-top:10px;display:block;">— Isai Barahona</span>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- RESOURCES -->
+
+  <section class="resources" id="resources">
+    <div class="section-label">Veteran Resources</div>
+    <p class="resources-intro reveal">You don't have to figure this out alone. Trusted resources for veterans navigating transition, housing, health, education, and community.</p>
+
+```
+<!-- CRISIS BAR -->
+<div class="crisis-bar-wrap reveal">
+  <div class="crisis-bar">
+    <div class="crisis-bar-eyebrow">🆘 &nbsp;Veterans Crisis Line</div>
+    <div class="crisis-bar-number">Call 988 · Press 1<br>Text: 838255</div>
+    <div class="crisis-bar-sub">VeteransCrisisLine.net · Available 24/7</div>
+  </div>
+</div>
+
+<!-- MENTAL HEALTH PANEL -->
+<div class="mh-panel reveal">
+  <div class="mh-panel-icon">🧠</div>
+  <div class="mh-panel-title">Mental Health — Crisis, Counseling &amp; Clinical Care</div>
+  <div class="mh-grid">
+    <div>
+      <div class="mh-col-label crisis">🆘 &nbsp;Immediate Crisis</div>
+      <div class="mh-entries">
+        <div><div class="mh-entry-name">Veterans Crisis Line — 24/7</div><div class="mh-entry-detail">Call 988 · Press 1</div></div>
+        <div><div class="mh-entry-name">Crisis Text Line</div><div class="mh-entry-detail">Text 838255</div></div>
+        <div><div class="mh-entry-name">SD Access &amp; Crisis Line — 24/7</div><div class="mh-entry-detail">(888) 724-7240</div></div>
+        <div><div class="mh-entry-name">Military Crisis Line</div><div class="mh-entry-detail">(888) 457-4838</div></div>
+        <div><div class="mh-entry-name">Emergency / Life Threatening</div><div class="mh-entry-detail">Call 911</div></div>
+        <div><div class="mh-entry-name">Psychiatric Emergency · VA San Diego</div><div class="mh-entry-detail">8am–4pm: (858) 552-8585 · After hours: ER</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="mh-col-label va">🏛️ &nbsp;VA Mental Health — San Diego</div>
+      <div class="mh-entries">
+        <div><div class="mh-entry-name">VA Mental Health Clinic — La Jolla</div><div class="mh-entry-detail">(858) 642-3391 · 3350 La Jolla Village Dr · M–F 7:30am–4:30pm</div></div>
+        <div><div class="mh-entry-name">Same-Day Walk-In — No Appt Needed</div><div class="mh-entry-detail">2nd Floor, North Wing · VA Medical Center</div></div>
+        <div><div class="mh-entry-name">VA Social Work Services</div><div class="mh-entry-detail">(858) 552-8585 · Housing, finances, crisis, referrals</div></div>
+        <div><div class="mh-entry-name">Mission Valley VA Clinic</div><div class="mh-entry-detail">(619) 400-5000 · 8810 Rio San Diego Dr</div></div>
+        <div><div class="mh-entry-name">VA Suicide Prevention Coordinator</div><div class="mh-entry-detail">(858) 552-8585 · Ask for Behavioral Health</div></div>
+        <div><div class="mh-entry-name">VA PTSD Program — Individual &amp; Group</div><div class="mh-entry-detail">va.gov/san-diego-health-care</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="mh-col-label community">👥 &nbsp;Community Clinicians &amp; Counseling</div>
+      <div class="mh-entries">
+        <div><div class="mh-entry-name">Cohen Military Family Clinic — Free therapy for post-9/11 veterans &amp; families</div><div class="mh-entry-detail">(619) 393-2000 · vvsd.net/cohenclinicsandiego</div></div>
+        <div><div class="mh-entry-name">VA Vet Center — Counseling, PTSD, MST · No enrollment needed</div><div class="mh-entry-detail">(858) 642-1500 · Mission Valley</div></div>
+        <div><div class="mh-entry-name">Courage to Call — Veteran peer counseling hotline</div><div class="mh-entry-detail">(877) 698-7838 · 8am–8pm daily</div></div>
+        <div><div class="mh-entry-name">Family Health Centers SD — Sliding scale psychologists &amp; social workers</div><div class="mh-entry-detail">(619) 515-2300 · fhcsd.org</div></div>
+        <div><div class="mh-entry-name">VA Whole Health — Free coaching &amp; integrative mental health</div><div class="mh-entry-detail">(858) 552-8585 · Ask for Whole Health</div></div>
+        <div><div class="mh-entry-name">211 San Diego — Any hour, any need, any language</div><div class="mh-entry-detail">Dial 2-1-1 · 211sandiego.org</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESOURCE CARDS -->
+<div class="resources-grid">
+  <div class="resource-card reveal">
+    <div class="resource-icon">🎖️</div>
+    <div class="resource-card-title">Transition</div>
+    <ul class="resource-list">
+      <li>VA Transition Assistance Program<a href="https://www.va.gov" target="_blank">va.gov/tap</a></li>
+      <li>Boots to Business — SBA<a href="https://www.sba.gov/bootstobusiness" target="_blank">sba.gov/bootstobusiness</a></li>
+      <li>Veterans Village of San Diego<a href="https://www.vvsd.net" target="_blank">vvsd.net · (619) 393-2000</a></li>
+      <li>SD County Veteran Services<a href="tel:8586943222">(858) 694-3222</a></li>
+    </ul>
+  </div>
+  <div class="resource-card reveal" style="transition-delay:.1s">
+    <div class="resource-icon">🏠</div>
+    <div class="resource-card-title">Housing</div>
+    <ul class="resource-list">
+      <li>VA Home Loan — Zero Down<a href="https://www.va.gov/housing-assistance" target="_blank">va.gov/housing-assistance</a></li>
+      <li>HUD-VASH Emergency Housing<a href="tel:8585528585">VA San Diego: (858) 552-8585</a></li>
+      <li>Alpha Project Housing Navigation<a href="https://www.alphaproject.org" target="_blank">alphaproject.org · (619) 542-1877</a></li>
+      <li>211 San Diego — 24/7 Resources<a href="tel:211">Dial 2-1-1</a></li>
+    </ul>
+  </div>
+  <div class="resource-card reveal" style="transition-delay:.2s">
+    <div class="resource-icon">🎓</div>
+    <div class="resource-card-title">Education</div>
+    <ul class="resource-list">
+      <li>GI Bill — Post-9/11 Chapter 33<a href="https://www.va.gov/education" target="_blank">va.gov/education · (888) 442-4551</a></li>
+      <li>Vocational Rehab & Employment<a href="https://www.va.gov/careers-employment/vocational-rehabilitation" target="_blank">va.gov/vre</a></li>
+      <li>SDCCD Veterans Programs<a href="https://www.sdccd.edu/veterans" target="_blank">sdccd.edu/veterans</a></li>
+      <li>Warrior-Scholar Project<a href="https://www.warrior-scholar.org" target="_blank">warrior-scholar.org</a></li>
+    </ul>
+  </div>
+  <div class="resource-card reveal" style="transition-delay:.05s">
+    <div class="resource-icon">💼</div>
+    <div class="resource-card-title">Employment</div>
+    <ul class="resource-list">
+      <li>Hire Heroes USA — Free Coaching<a href="https://www.hireheroesusa.org" target="_blank">hireheroesusa.org · (844) 634-1520</a></li>
+      <li>USAJOBS — Federal Preference<a href="https://www.usajobs.gov" target="_blank">usajobs.gov</a></li>
+      <li>SD Workforce Partnership<a href="https://www.workforce.org" target="_blank">workforce.org · (619) 228-2900</a></li>
+      <li>Workshop for Warriors<a href="https://www.workshopforwarriors.org" target="_blank">workshopforwarriors.org</a></li>
+    </ul>
+  </div>
+  <div class="resource-card reveal" style="transition-delay:.15s">
+    <div class="resource-icon">🏥</div>
+    <div class="resource-card-title">Healthcare</div>
+    <ul class="resource-list">
+      <li>VA San Diego Healthcare<a href="tel:8585528585">(858) 552-8585 · va.gov/health-care</a></li>
+      <li>VA Whole Health — Free<a href="tel:8585528585">(858) 552-8585 · Ask for Whole Health</a></li>
+      <li>Wounded Warrior Project<a href="https://www.woundedwarriorproject.org" target="_blank">woundedwarriorproject.org</a></li>
+      <li>Family Health Centers SD<a href="https://www.fhcsd.org" target="_blank">fhcsd.org · (619) 515-2300</a></li>
+    </ul>
+  </div>
+  <div class="resource-card reveal" style="transition-delay:.25s">
+    <div class="resource-icon">🤝</div>
+    <div class="resource-card-title">Community</div>
+    <ul class="resource-list">
+      <li>VA Vet Center San Diego<a href="tel:8586421500">(858) 642-1500 · Mission Valley</a></li>
+      <li>Team Red White & Blue<a href="https://www.teamrwb.org" target="_blank">teamrwb.org — SD Chapter</a></li>
+      <li>The Mission Continues<a href="https://www.missioncontinues.org" target="_blank">missioncontinues.org</a></li>
+      <li>Boots to Flip-Flops<a href="mailto:isai8barahona@gmail.com">isai8barahona@gmail.com</a></li>
+    </ul>
+  </div>
+</div>
+```
+
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- CONTACT -->
+
+  <section class="contact" id="contact">
+    <div class="section-label">Connect</div>
+    <div class="contact-grid">
+      <div class="reveal-left">
+        <h2 class="contact-headline">Ready to take off the boots?</h2>
+        <p class="contact-body">Whether you're looking for one-on-one support, want to attend an upcoming event, or just want to have a conversation with someone who's been there — reach out. No pitch. No pressure. Just one veteran to another.</p>
+        <div class="contact-info">
+          <div class="contact-item"><div class="contact-dot"></div><div class="contact-text"><a href="mailto:isai8barahona@gmail.com">isai8barahona@gmail.com</a></div></div>
+          <div class="contact-item"><div class="contact-dot"></div><div class="contact-text"><a href="tel:7604688737">(760) 468-8737</a></div></div>
+          <div class="contact-item"><div class="contact-dot"></div><div class="contact-text">San Diego, CA — serving veterans throughout San Diego County</div></div>
+        </div>
+      </div>
+      <div class="contact-mission reveal">
+        <div class="mission-title">The Boots to Flip-Flops Mission</div>
+        <div class="mission-text">In Biodynamic Craniosacral Therapy, we speak of fluid tides and deep stillness — the body's innate intelligence moving beneath the surface. Boots to Flip-Flops is built on this same principle: beneath the noise of transition, beneath the weight of service, there is a stillness in every veteran waiting to be found.<br><br>This is a secular, peer-led, body-centered space. No dogma. No judgment. Just the work.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="footer-logo">Boots to Flip-Flops</div>
+    <div class="footer-tagline">From the battlefield to the healing room — the mission continues.</div>
+    <div class="footer-location">San Diego, CA · Est. 2026</div>
+  </footer>
+
+  <script>
+    // ── CUSTOM CURSOR ──
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+    (function animRing() { rx += (mx - rx) * .12; ry += (my - ry) * .12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); })();
+
+    // ── SCROLL PROGRESS BAR ──
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      document.getElementById('progress-bar').style.width = pct + '%';
+    }, { passive: true });
+
+    // ── HERO CANVAS PARTICLES ──
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [];
+    function resizeCanvas() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    for (let i = 0; i < 55; i++) particles.push({
+      x: Math.random() * 1440, y: Math.random() * 900,
+      r: Math.random() * 1.4 + .3, vy: -(Math.random() * .4 + .1),
+      vx: (Math.random() - .5) * .15, o: Math.random() * .5 + .1
+    });
+    function drawParticles() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(93,184,204,${p.o})`; ctx.fill();
+        p.x += p.vx; p.y += p.vy;
+        if (p.y < -5) { p.y = H + 5; p.x = Math.random() * W; }
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    // ── SCROLL REVEAL (IntersectionObserver) ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-scale').forEach(el => observer.observe(el));
+
+    // ── ANIMATED STAT COUNTERS ──
+    const statObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll('[data-count]').forEach(el => {
+          const target = +el.dataset.count, duration = 1200, step = duration / target;
+          let current = 0;
+          const timer = setInterval(() => {
+            current++; el.textContent = current;
+            if (current >= target) clearInterval(timer);
+          }, step);
+        });
+        statObs.unobserve(e.target);
+      });
+    }, { threshold: .5 });
+    document.querySelectorAll('.stats-bar').forEach(el => statObs.observe(el));
+
+    // ── GLOW CLICK EFFECTS ──
+    function spawnGlow(el, e) {
+      const rect = el.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height) * 2;
+      const x = (e.clientX - rect.left) - size / 2;
+      const y = (e.clientY - rect.top) - size / 2;
+      const burst = document.createElement('span');
+      burst.className = 'glow-burst';
+      burst.style.cssText = `width:${size}px;height:${size}px;left:${x}px;top:${y}px;`;
+      el.appendChild(burst);
+      burst.addEventListener('animationend', () => burst.remove());
+    }
+    function addGlowActive(el, duration = 900) {
+      el.classList.add('glow-active');
+      setTimeout(() => el.classList.remove('glow-active'), duration);
+    }
+    const glowTargets = [
+      ...document.querySelectorAll('.nav-links a'),
+      ...document.querySelectorAll('.session-tab'),
+      ...document.querySelectorAll('.resource-card'),
+      ...document.querySelectorAll('.pricing-card'),
+      ...document.querySelectorAll('.credential-item'),
+    ];
+    glowTargets.forEach(el => {
+      el.addEventListener('click', e => { spawnGlow(el, e); addGlowActive(el); });
+    });
+
+    // ── SESSION TABS ──
+    document.querySelectorAll('.session-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.session-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.session-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ── NAV / FLOAT DOT ACTIVE STATE ──
+    const sections = ['about','journey','services','pricing','resources','contact'];
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const floatLinks = document.querySelectorAll('.float-menu a');
+    const backToTop = document.querySelector('.back-to-top');
+    function getActive() {
+      let active = sections[0];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 80) active = id;
+      }
+      return active;
+    }
+    function updateActive() {
+      const active = getActive();
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active));
+      floatLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active));
+      backToTop.classList.toggle('visible', window.scrollY > 400);
+    }
+    window.addEventListener('scroll', updateActive, { passive: true });
+    updateActive();
+  </script>
+
+</body>
+</html>
